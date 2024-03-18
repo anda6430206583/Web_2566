@@ -1,0 +1,20 @@
+<div id="languages_block_top">
+    <div id="countries">
+      <ul style="list-style:none; display:flex; justify-content:center;">
+        {foreach from=$languages key=k item=language name="languages"}
+          <li style="margin: 5px;">
+            {if $language.iso_code != $lang_iso}
+              {assign var=indice_lang value=$language.id_lang}
+              {if isset($lang_rewrite_urls.$indice_lang)}
+                <a href="{$lang_rewrite_urls.$indice_lang|escape:htmlall}" title="{$language.name}" class="flag-button">
+              {else}
+                <a href="{$link->getLanguageLink($language.id_lang)|escape:htmlall}" title="{$language.name}" class="flag-button">
+              {/if}
+              <img src="{base_dir}img/flags/{$language.iso_code}.jpg" alt="{$language.iso_code}" width="25" height="20" style="margin-top: 5px;"/>
+              </a>
+            {/if}
+          </li>
+        {/foreach}
+      </ul>
+    </div>
+  </div>
